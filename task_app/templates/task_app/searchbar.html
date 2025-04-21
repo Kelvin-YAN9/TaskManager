@@ -1,5 +1,5 @@
 {% extends 'task_app/navbar.html' %} {% block content2 %} {% if searched %}
-<h1 class="my-2">You've searched for {{searched}}</h1>
+<h1 class="my-2">您正在查询 {{searched}}</h1>
 <div class="card-columns">
   {% for task in tasks %} {% if task.complete %}
 
@@ -48,5 +48,5 @@
   {% endif %} {% endfor %}
 </div>
 {% else %}
-<h1 class="my-2">You forgot to input your search</h1>
+<h1 class="my-2">请输入查询内容！</h1>
 {% endif %} {% endblock content2 %}

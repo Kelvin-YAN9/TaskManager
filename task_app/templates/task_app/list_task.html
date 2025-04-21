@@ -1,51 +1,30 @@
-{% extends 'task_app/navbar.html' %} {% block content2 %}
+{% extends 'task_app/navbar.html' %} 
+{% block content2 %}
 
-<h1 class="my-2">Tasks List :</h1>
+<h1 class="my-2">任务列表 :</h1>
 <div class="card-columns">
-  {% for task in all_tasks %} {% if task.complete %}
-
-  <div class="card border-success mb-3" style="max-width: 25rem">
-    <div class="card-header">
-      <i
-        ><s>
-          <h5 class="card-title">
-            <a
-              href="{% url 'task_app:detail_task' task.id %}"
-              class="text-success"
-            >
-              {{task}}
-            </a>
-          </h5>
-        </s></i
-      >
-    </div>
-    <div class="card-body text-success">
-      <p class="card-text m-0">{{task.description|linebreaks}}</p>
-      <a
-        href="{% url 'task_app:delete_task' task.id%}"
-        class="btn btn-outline-danger btn-sm"
-        ><i class="fa-solid fa-trash-can"></i
-      ></a>
-    </div>
-  </div>
-
-  {% else %}
-
-  <div class="card border-primary mb-3" style="max-width: 25rem">
-    <div class="card-header">
-      <h5 class="card-title">
-        <a href="{% url 'task_app:detail_task' task.id %}"> {{task}} </a>
-      </h5>
-    </div>
-    <div class="card-body text-dark">
-      <p class="card-text m-0">{{task.description|linebreaks}}</p>
-      <a
-        href="{% url 'task_app:delete_task' task.id%}"
-        class="btn btn-outline-danger btn-sm"
-        ><i class="fa-solid fa-trash-can"></i
-      ></a>
-    </div>
-  </div>
-  {% endif %} {% endfor %}
+    {% for task in all_tasks %}
+        <div class="card {% if task.complete %}border-success{% else %}border-primary{% endif %} mb-3" style="max-width: 25rem">
+            <div class="card-header">
+                {% if task.complete %}
+                    <i><s><h5 class="card-title"><a href="{% url 'task_app:detail_task' task.id %}" class="text-success">{{task}}</a></h5></s></i>
+                {% else %}
+                    <h5 class="card-title"><a href="{% url 'task_app:detail_task' task.id %}">{{task}}</a></h5>
+                {% endif %}
+                <!-- 显示优先级 -->
+                <span class="badge badge-{% if task.priority == 'H' %}danger{% elif task.priority == 'M' %}warning{% else %}success{% endif %}">
+                    {{ task.get_priority_display }}
+                </span>
+                <!-- 显示分类 -->
+                <span class="badge badge-info">
+                    {{ task.get_category_display }}
+                </span>
+            </div>
+            <div class="card-body {% if task.complete %}text-success{% else %}text-dark{% endif %}">
+                <p class="card-text m-0">{{task.description|linebreaks}}</p>
+                <a href="{% url 'task_app:delete_task' task.id%}" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+            </div>
+        </div>
+    {% endfor %}
 </div>
 {% endblock content2 %}

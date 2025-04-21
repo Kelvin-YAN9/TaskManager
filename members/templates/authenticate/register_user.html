@@ -1,6 +1,6 @@
 {% extends 'task_app/base.html' %} {% block content %} {% if form.errors %}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  There was an error in your form ...
+  填写信息有误……
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -24,7 +24,7 @@
     {{form.as_p}}
     <input
       type="submit"
-      value="Register"
+      value="注册"
       class="btn btn-outline-primary btn-block"
     />
   </form>

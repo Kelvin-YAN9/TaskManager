@@ -1,5 +1,9 @@
 {% extends 'task_app/navbar.html' %} {% block content2 %} {% load static %}
 
+<!--引入flatpickr库-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <div class="row my-5 align-items-center">
   <div class="col-6">
     <img
@@ -18,11 +22,18 @@
       height="72"
     />
 
-    <h1 style="display: inline">Update Your Task</h1>
+    <h1 style="display: inline">更新您的任务</h1>
     {% csrf_token %} {% for field in form %} {{field}} {% endfor %}
     <br />
-    <input type="submit" value="Update" class="btn btn-outline-secondary" />
+    <input type="submit" value="更新" class="btn btn-outline-secondary" />
   </form>
 </div>
+
+<!-- 更新任务表单的JavaScript代码 -->
+<script>
+  flatpickr("input[name='created']", {
+      dateFormat: "m/d/Y",  // 指定日期格式
+  });
+</script>
 
 {% endblock content2 %}

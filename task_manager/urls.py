@@ -18,8 +18,7 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('task_app.urls')),
-    path('members/',include(('django.contrib.auth.urls','members'), namespace='authenticate')),
-    path('members/',include('members.urls')),
-    
+    path('',include('members.urls')),
+    path('task_app/',include('task_app.urls')),
+    path('members/',include(('members.urls'), namespace='authenticate')),
 ]

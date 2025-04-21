@@ -18,10 +18,11 @@
         width="72"
         height="72"
       />
+        <!-- src="https://play-lh.googleusercontent.com/pjUulZ-Vdo7qPKxk3IRhnk8SORPlgSydSyYEjm7fGcoXO8wDyYisWXwQqEjMryZ_sqK2" -->  
       <h3 class="mx-2" style="display: inline">Task Manager</h3>
-      <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">请登录</h1>
       <div class="form-group">
-        <label for="exampleInputEmail1" class="sr-only">Username</label>
+        <label for="exampleInputEmail1" class="sr-only">用户名</label>
         <input
           type="text"
           class="form-control"
@@ -30,7 +31,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1" class="sr-only">Password</label>
+        <label for="exampleInputPassword1" class="sr-only">密码</label>
         <input
           type="password"
           class="form-control"
@@ -39,12 +40,12 @@
         />
       </div>
       <button class="btn btn-primary btn-lg btn-block" type="submit">
-        Log in
+        登陆
       </button>
       <br />
       <p>
-        Don't have an account
-        <a href="{% url 'members:register_user' %}">Register Here.</a>
+        没有账号?
+        <a href="{% url 'members:register_user' %}">点击注册</a>
       </p>
     </form>
   </div>

@@ -1,0 +1,23 @@
+{% extends 'task_app/base.html' %} {% block content %}
+
+<div class="row h-100 justify-content-center align-items-center">
+    <form method="POST" class="col-12 register-form">
+        {% csrf_token %}
+        <div class="text-center">
+            <img
+                class="mb-4"
+                src="https://play-lh.googleusercontent.com/pjUulZ-Vdo7qPKxk3IRhnk8SORPlgSydSyYEjm7fGcoXO8wDyYisWXwQqEjMryZ_sqK2"
+                alt=""
+                width="72"
+                height="72"
+            />
+            <h1 style="display: inline">个人资料</h1>
+        </div>
+        {{ form.as_p }}
+        <input type="submit" value="保存" class="btn btn-outline-primary btn-block" />
+        <!-- 添加退出到任务列表的按钮 -->
+        <a href="{% url 'task_app:list_task' %}" class="btn btn-outline-primary btn-block">退出</a>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,6 +1,8 @@
-
 {% extends 'task_app/navbar.html' %} {% block content2 %}
 {% load static %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <div class="row my-5 align-items-center">
   <form method="POST" class="col-6">
@@ -12,17 +14,49 @@
         height="72"
       />
 
-      <h1 style="display: inline">Add Your Task</h1>
+      <h1 style="display: inline">添加任务</h1>
     {% csrf_token %} 
     {% for field in form %}
         {{field}} 
     {% endfor %}
     <br>
-    <input type="submit" class="btn btn-outline-success" value="Add Task">
+    <input type="submit" class="btn btn-outline-success" value="添加任务">
   </form>
   <div class="col-6">
     <img src="{% static 'members/Task-amico.png' %}" alt="" width="512" height="512">
   </div>
 </div>
 
+<script>
+    flatpickr("input[name='created']", {
+        dateFormat: "m/d/Y",  // 指定日期格式
+    });
+</script>
+
 {% endblock content2 %}
+<!--
+
+<div class="row my-5 align-items-center">
+  <form method="POST" class="col-6">
+    <img
+        class="mb-4"
+        src="{% static 'members/taskapplogo.png' %}"
+        alt=""
+        width="72"
+        height="72"
+      />
+
+      <h1 style="display: inline">添加您的任务</h1>
+    {% csrf_token %} 
+    {% for field in form %}
+        {{field}} 
+    {% endfor %}
+    <br>
+    <input type="submit" class="btn btn-outline-success" value="添加任务">
+  </form>
+  <div class="col-6">
+    <img src="{% static 'members/Task-amico.png' %}" alt="" width="512" height="512">
+  </div>
+</div>
+
+-->
